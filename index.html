@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="./static/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./static/css/glide.core.css">
+    <link rel="stylesheet" href="./static/css/glide.theme.css">
+    <link rel="stylesheet" type="text/css" href="./static/css/styles.css">
+
+    <script src="./static/js/jquery.min.js"></script>
+    <script src="./static/js/jquery.flip.min.js"></script>
+
+    <script src="./static/js/glide.min.js"></script>
+
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']],
+        }
+      };
+    </script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <title>Fashion-VDM: Video Diffusion Model for Virtual Try-On</title>
+  </head>
+  <body>
+      
+    <section id="title_authors">
+      <div style="padding-top: 50px; padding-bottom: 5px; background-color: rgb(255, 255, 255);">
+        <h1 style="text-align: center; color: rgb(0, 0, 0);">Fashion-VDM: Video Diffusion Model for Virtual Try-On </h1>
+      </div>
+  
+      <div class="authors" style="background-color: rgb(255, 255, 255); margin-top: -20px; margin-bottom: -35px">
+        <p style="padding-bottom: 15px; color:rgb(0, 0, 0)">
+          <a href="https://johannakarras.github.io/">Johanna Karras</a><sup>1,2</sup>, 
+          <a href="http://www.svcl.ucsd.edu/people/yingwei/">Yingwei Li</a><sup>1</sup>, 
+          <a href="https://nanliu.io/">Nan Liu</a><sup>1</sup>, 
+          <a href="https://homes.cs.washington.edu/~lyzhu/">Luyang Zhu</a><sup>1,2</sup>, 
+        </p>
+        <p style="padding-bottom:15px; color: rgb(0, 0, 0)">
+          <a href="">Innfarn Yoo</a><sup>1</sup>,
+          <a href="">Andreas Lugmayr</a><sup>1</sup>,
+          <a href="">Chris Lee</a><sup>1</sup>,
+          <a href="https://www.irakemelmacher.com/">Ira Kemelmacher-Shlizerman</a><sup>1,2</sup>
+        </p>
+        <p class="smaller" style="padding-bottom: 15px; color: rgb(0, 0, 0)"><sup>1</sup>Google Research <sup>2</sup>University of Washington</p>
+        <p style="color: rgb(0, 0, 0)">SiGGRAPH Asia 2024</p>
+      </div>
+    </section>
+    <section id="gallery">
+      <div class="glide" style="text-align: center;" id="posed_garment_vto">
+        <div class="glide__track" data-glide-el="track">
+          <ul class="glide__slides">
+            <li class="glide__slide">
+              <div class="tryon_demo">
+                  <div class="main">
+                      <div class="column">
+                          <video id="galleryPersonVideo" autoplay controls muted loop>
+                              <source src="static/videos/gallery/person_1.mp4" type="video/mp4"/>
+                            </video>
+                          <p>Input Person</p>
+                      </div>
+                      <div class="column">
+                          <img src="static/images/gallery_garments/garment_1.png"></img>
+                          <p>Input Garment</p>
+                      </div>
+                      <div class="column">
+                          <video id="galleryTryonVideo" autoplay controls muted loop>
+                              <source src="static/videos/gallery/tryon_1.mp4" type="video/mp4"/>
+                          </video>
+                          <p>Try-On Video</p>
+                      </div>
+                  </div>
+                  <script src="./static/js/gallery_script.js"></script>
+              </div>
+            </li>
+            <li class="glide__slide">
+              <div class="tryon_demo">
+                  <div class="main">
+                      <div class="column">
+                          <video id="galleryPersonVideo" autoplay controls muted loop>
+                              <source src="static/videos/gallery/person_4.mp4" type="video/mp4"/>
+                        </video>
+                          <p>Input Person</p>
+                      </div>
+                      <div class="column">
+                        <img src="static/images/gallery_garments/garment_4.png"></img>
+                        <p>Input Garment</p>
+                      </div>
+                      <div class="column">
+                          <video id="galleryTryonVideo" autoplay controls muted loop>
+                              <source src="static/videos/gallery/tryon_4.mp4" type="video/mp4"/>
+                          </video>
+                          <p>Try-On Video</p>
+                      </div>
+                  </div>
+                  <script src="./static/js/demo_script.js"></script>
+              </div>
+            </li>
+            <li class="glide__slide">
+              <div class="tryon_demo">
+                  <div class="main">
+                      <div class="column">
+                          <video id="galleryPersonVideo" autoplay controls muted loop>
+                              <source src="static/videos/gallery/person_5.mp4" type="video/mp4"/>
+                        </video>
+                        <p>Input Person</p>
+                      </div>
+                      <div class="column">
+                        <img src="static/images/gallery_garments/garment_5.png"></img>
+                        <p>Input Garment</p>
+                      </div>
+                      <div class="column">
+                          <video id="galleryTryonVideo" autoplay controls muted loop>
+                              <source src="static/videos/gallery/tryon_5.mp4" type="video/mp4"/>
+                          </video>
+                          <p>Try-On Video</p>
+                      </div>
+                  </div>
+                  <script src="./static/js/demo_script.js"></script>
+              </div>
+            </li>
+            <li class="glide__slide">
+              <div class="tryon_demo">
+                  <div class="main">
+                      <div class="column">
+                          <video id="galleryPersonVideo" autoplay controls muted loop>
+                              <source src="static/videos/gallery/person_3.mp4" type="video/mp4"/>
+                        </video>
+                        <p>Input Person</p>
+                      </div>
+                      <div class="column">
+                        <img src="static/images/gallery_garments/garment_3.png"></img>
+                        <p>Input Garment</p>
+                      </div>
+                      <div class="column">
+                          <video id="galleryTryonVideo" autoplay controls muted loop>
+                              <source src="static/videos/gallery/tryon_3.mp4" type="video/mp4"/>
+                          </video>
+                          <p>Try-On Video</p>
+                      </div>
+                  </div>
+                  <script src="./static/js/demo_script.js"></script>
+              </div>
+            </li>
+            <li class="glide__slide">
+              <div class="tryon_demo">
+                  <div class="main">
+                      <div class="column">
+                          <video id="galleryPersonVideo" autoplay controls muted loop>
+                              <source src="static/videos/gallery/person_2.mp4" type="video/mp4"/>
+                        </video>
+                        <p>Input Person</p>
+                      </div>
+                      <div class="column">
+                        <img src="static/images/gallery_garments/garment_2.png"></img>
+                        <p>Input Garment</p>
+                      </div>
+                      <div class="column">
+                          <video id="galleryTryonVideo" autoplay controls muted loop>
+                              <source src="static/videos/gallery/tryon_2.mp4" type="video/mp4"/>
+                          </video>
+                          <p>Try-On Video</p>
+                      </div>
+                  </div>
+                  <script src="./static/js/demo_script.js"></script>
+              </div>
+            </li>
+            <li class="glide__slide">
+              <div class="tryon_demo">
+                  <div class="main">
+                      <div class="column">
+                          <video id="galleryPersonVideo" autoplay controls muted loop>
+                              <source src="static/videos/gallery/person_6.mp4" type="video/mp4"/>
+                        </video>
+                        <p>Input Person</p>
+                      </div>
+                      <div class="column">
+                        <img src="static/images/gallery_garments/garment_6.png"></img>
+                        <p>Input Garment</p>
+                      </div>
+                      <div class="column">
+                          <video id="galleryTryonVideo" autoplay controls muted loop>
+                              <source src="static/videos/gallery/tryon_6.mp4" type="video/mp4"/>
+                          </video>
+                          <p>Try-On Video</p>
+                      </div>
+                  </div>
+                  <script src="./static/js/demo_script.js"></script>
+              </div>
+            </li>
+            <li class="glide__slide">
+              <div class="tryon_demo">
+                  <div class="main">
+                      <div class="column">
+                          <video id="galleryPersonVideo" autoplay controls muted loop>
+                              <source src="static/videos/gallery/person_0.mp4" type="video/mp4"/>
+                        </video>
+                        <p>Input Person</p>
+                      </div>
+                      <div class="column">
+                        <img src="static/images/gallery_garments/garment_0.png"></img>
+                        <p>Input Garment</p>
+                      </div>
+                      <div class="column">
+                          <video id="galleryTryonVideo" autoplay controls muted loop>
+                              <source src="static/videos/gallery/tryon_0.mp4" type="video/mp4"/>
+                          </video>
+                          <p>Try-On Video</p>
+                      </div>
+                  </div>
+                  <script src="./static/js/demo_script.js"></script>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div class="glide__arrows" data-glide-el="controls">
+          <button class="glide__arrow glide__arrow--left" data-glide-dir="<" style="color:rgb(0, 0, 0); border: 2px solid rgba(0, 0, 0, 0.5); margin-right:30px;">prev</button>
+          <button class="glide__arrow glide__arrow--right" data-glide-dir=">" style="color:rgb(0, 0, 0); border: 2px solid rgba(0, 0, 0, 0.5); margin-left:30px;">next</button>
+        </div>
+      </div>
+      <script>
+        new Glide('#posed_garment_vto', {
+          type: 'carousel',
+          startAt: 0,
+          perView: 1
+        }).mount();
+      </script>
+    </section>
+
+    <section id="abstract">
+      <div class="abstract" style="background-color: rgb(255, 255, 255); margin-top: -35px;">
+        <div class="inside">
+          <p class="text" style="color:rgb(0, 0, 0);">
+            We present Fashion-VDM, a video diffusion model (VDM) for generating virtual try-on videos. Given an input garment image and person video, our method aims to generate a high-quality try-on video of the person wearing the given garment, while preserving the person's identity and motion. Image-based virtual try-on has shown impressive results; however, existing video virtual try-on (VVT) methods are still lacking garment details and temporal consistency. To address these issues, we propose a diffusion-based architecture for video virtual try-on, split classifier-free guidance for increased control over the conditioning inputs, and a progressive temporal training strategy for single-pass 64-frame, 512px video generation. We also demonstrate the effectiveness of joint image-video training for video try-on, especially when video data is limited. Our qualitative and quantitative experiments show that our approach sets the new state-of-the-art for video virtual try-on. 
+          </p>
+          <div style="display:block; text-align: center;">
+            <a class="read-paper" target="_blank" href="./static/pdf/Fashion_VDM.pdf"><button style="">Research Paper</button></a>
+            <a class="read-paper" target="_blank" href="./static/pdf/Fashion_VDM_Supplementary.pdf"><button style="">Supplementary</button></a>
+            <a download="sample-data" class="read-paper" href="./static/data/ubc-benchmark.zip"><button style="">Sample Data &#9921;</button> </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="method">
+    <div class="content" style="background-color: rgb(255, 255, 255); color:rgb(0, 0, 0);">
+      <div class="header_dark_gray" style="background-color: rgb(230, 230, 230); color:rgb(0, 0, 0)">
+        <h1>Approach</h1>
+      </div>
+    </div>
+      <div class="white">
+        <figure>
+          <img src="./static/images/architecture.svg" style="padding-bottom: 0px; margin-bottom:-80px;">
+          <figcaption style="background-color: rgb(255, 255, 255); padding-top:30px;">
+            <p>
+              <b>$\text{Architecture.}$</b> 
+              Given a noisy video $z_t$ at diffusion timestep $t$, a forward pass of Fashion-VDM computes a single denoising step to get the denoised video $z'_{t-1}$. Noisy video $z_t$ is preprocessed into person poses $J_p$ and clothing-agnostic frames $I_a$, while the garment image $I_g$ is preprocessed into the garment segmentation $S_g$ and garment poses $J_g$. The architecture follows [Zhu et al. 2024], except the main UNet contains  3D-Conv and temporal attention blocks to maintain temporal consistency. Additionally, we inject temporal down/upsampling blocks during 64-frame temporal training. Noisy video $z_t$ is encoded by the main UNet and the conditioning signals, $S_g$ and $I_a$, are encoded by separate UNet encoders. In the 8 DiT blocks at the lowest resolution of the UNet, the garment conditioning features are cross-attended with the noisy video features and the spatially-aligned clothing-agnostic features $z_a$ and noisy video features are directly concatenated. $J_g$ and $J_p$ are encoded by single linear layers, then concatenated to the noisy features in all UNet 2D spatial layers.
+            </p>
+          </figcaption>
+        </figure>
+        <figure>
+          <img class="center" src="./static/images/temporal_progressive_training.svg" style="display: 'block'; margin-left: auto; margin-left: auto; margin-bottom:-30px;" >
+          <figcaption style="background-color: rgb(255, 255, 255); padding-top:30px;">
+            <p>
+              <b>$\text{Progressive Temporal Training.}$</b>  
+                Fashion-VDM is trained in multiple phases of increasing frame length. We first pretrain an image model, by training only the spatial layers on our image dataset. In subsequent phases, we train temporal and spatial layers on increasingly long batches of consecutive frames from our video dataset.
+            </p>
+          </figcaption>
+        </figure>
+        <figure>
+          <img src="./static/images/split_cfg_ablation.svg" style="display: 'block'; margin-left: auto; margin-left: auto; max-height:512px; margin-bottom:-20px;">
+          <figcaption style="background-color: rgb(255, 255, 255); padding-top:30px;">
+            <p>
+              <b>$\text{Split Classifier-Free Guidance.}$</b> 
+                We introduce split-CFG, a generalization of dual-CFG which allows independent control over multiple conditioning signals. Each (p<sub>0</sub>, p<sub>1</sub>, p<sub>2</sub>, p<sub>3</sub>) above represents a different weighting over our conditional results: unconditional, garment conditioning, (person, garment) conditioning, and (person, garment, pose) conditioning, respectively.
+                
+                See the precise algorithm definition below, where &epsilon;<sub>&theta;</sub> represents the trained Fashion-VDM model, <i>C = {c<sub>i</sub> }</i> represents the set of conditioning signal groups, <i>W = {w<sub>i</sub> }</i>  represents the weights per conditioning signal group, and <i>z<sub>t</sub></i> is the noisy image at diffusion timestep <i>t</i>. In each inference step <i>i</i>, we add the next conditioning signal group <i>c<sub>i</sub></i> to the cumulative group of conditioning signals <i>c</i>, predict the noise &epsilon;&#770;<sub>i</sub> = &epsilon;<sub>&theta;</sub><i>(z<sub>t</sub>, c)</i>, and add the weighted difference between the current prediction and the previous prediction to the prediction of the previous step, &epsilon;&#770;<sub>i-1</sub>.
+            </p>
+            <img src="./static/images/split_cfg_algorithm.png" style="display: 'block'; width: max(400px, 70%); max-width: 600px; margin-left: auto; margin-left: auto; margin-top: 15px;>
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section id="interactive_demo">
+    <div class="content" style="background-color: rgb(255, 255, 255); color:rgb(0, 0, 0);">
+      <div class="header_dark_gray" style="background-color: rgb(230, 230, 230); color:rgb(0, 0, 0)">
+        <h1>Video Try-On Demo</h1>
+      </div>
+      <div class="tryon_demo">
+          <div class="main">
+              <div class="column">
+                  <video id="personVideo_0" autoplay controls muted loop>
+                      <source src="static/demo_videos/cropped_person_0/person.mp4" type="video/mp4"/>
+                </video>
+                  <p>Input Person</p>
+              </div>
+              <div class="column">
+                  <img id="garmentImage_0" src="static/demo_videos/cropped_person_0/garment_0.png" />
+                  <p style="padding-bottom:0px;">Input Garment</p>
+                  <button onclick="changeImage('prev', 'change_garment', 0, 4)">Prev</button>
+                  <button onclick="changeImage('next', 'change_garment', 0, 4)">Next</button>
+              </div>
+              <div class="column">
+                  <video id="tryonVideo_0" autoplay controls muted loop>
+                      <source src="static/demo_videos/cropped_person_0/garment_0.mp4" type="video/mp4"/>
+                  </video>
+                  <p>Try-On Video</p>
+              </div>
+          </div>
+          <script src="./static/js/demo_script.js"></script>
+      </div>
+    <div class="tryon_demo">
+          <div class="main">
+              <div class="column">
+                  <!--<img id="garmentImage" src="static/demo_images/men/ct_0.jpg" />-->
+                  <video id="personVideo_1" autoplay controls muted loop>
+                      <source src="static/demo_videos/cropped_person_1/person.mp4" type="video/mp4"/>
+                </video>
+                  <p>Input Person</p>
+              </div>
+              <div class="column">
+                  <img id="garmentImage_1" src="static/demo_videos/cropped_person_1/garment_0.png" />
+                  <p style="padding-bottom:0px;">Input Garment</p>
+                  <button onclick="changeImage('prev', 'change_garment', 1, 3)">Prev</button>
+                  <button onclick="changeImage('next', 'change_garment', 1, 3)">Next</button>
+              </div>
+              <div class="column">
+                  <video id="tryonVideo_1" autoplay controls muted loop>
+                      <source src="static/demo_videos/cropped_person_1/garment_0.mp4" type="video/mp4"/>
+                  </video>
+                  <p>Try-On Video</p>
+              </div>
+          </div>
+          <script src="./static/js/demo_script.js"></script>
+      </div>
+    </div>
+    </section>
+
+
+    <div class="content" style="background-color: rgb(255, 255, 255); color:rgb(0, 0, 0);">
+    <div class="header_dark_gray" style="background-color: rgb(230, 230, 230); color:rgb(0, 0, 0); margin-top:min(50px, 25%); margin-bottom:5%;">
+      <h1>Method Comparisons</h1>
+    </div>
+    </div>
+    <section id="sota_comparisons">
+      <div class="glide" style="text-align: center;" id="glide_layout_edit_tuckin">
+        <div class="glide__track" data-glide-el="track">
+          <ul class="glide__slides">
+            <li class="glide__slide">
+              <div class="gallery_video"><video autoplay controls muted loop src="static/videos/sota/0.mp4" style="margin-bottom:min(15px; 5%); width: 80%;"></div>
+            </li>
+            <li class="glide__slide">
+              <div class="gallery_video"><video autoplay controls muted loop src="static/videos/sota/1.mp4" style="margin-bottom:min(15px; 5%); width: 80%;"></div>
+            </li>
+            <li class="glide__slide">
+              <div class="gallery_video"><video autoplay controls muted loop src="static/videos/sota/2.mp4" style="margin-bottom:min(15px; 5%); width: 80%;"></div>
+            </li>
+          </ul>
+        </div>
+        <div class="comparison_caption" style="left: 1%; width: 85%; max-width: 1464px;">
+          <div class="column" style="left: 0%; width: 16%;">
+              <p>Input Garment</p>
+          </div>
+          <div class="column" style="left: 16%; width: 16%;">
+              <p>Input Person</p>
+          </div>
+          <div class="column" style="left: 32%; width: 16%;">
+            <p>M&M VTO</p>
+          </div>
+          <div class="column" style="left: 52%; width: 16%;">
+            <p>Magic Animate</p>
+          </div>
+          <div class="column" style="left: 68%; width: 16%;">
+            <p>Animate Anyone</p>
+          </div>
+          <div class="column" style="left: 100%; width: 16%;">
+              <p>Ours</p>
+          </div>
+        </div>
+        <div class="glide__arrows" data-glide-el="controls">
+          <button class="glide__arrow glide__arrow--left" data-glide-dir="<" style="color:rgb(0, 0, 0); border: 2px solid rgba(0, 0, 0, 0.5);margin-right:30px; margin-top:-20px;">prev</button>
+          <button class="glide__arrow glide__arrow--right" data-glide-dir=">" style="color:rgb(0, 0, 0); border: 2px solid rgba(0, 0, 0, 0.5);margin-left:30px; margin-top:-20px;">next</button>
+        </div>
+      </div>
+      <script>
+        new Glide('#glide_layout_edit_tuckin', {
+          type: 'carousel',
+          startAt: 0,
+          perView: 1
+        }).mount();
+      </script>
+      
+    </section>
+
+    <section id="limitations">
+    <div class="content" style="background-color: rgb(255, 255, 255); color:rgb(0, 0, 0);">
+      <div class="header_dark_gray" style="background-color: rgb(230, 230, 230); color:rgb(0, 0, 0);">
+        <h1>Limitations</h1>
+      </div>
+    </div>
+      <div class="limitations" style="background-color: rgb(255, 255, 255); color:rgb(0, 0, 0)">
+        <div class="inside">
+          <p class="text" style="padding: 16px;">
+           The main limitations of Fashion-VDM include inaccurate body shape, artifacts, and incorrect details in occluded garment regions. Body shape misrepresentation occurs, because while the person keypoints encode rough body shape, detailed body size measurements are lost. Another limitation is artifacts appearing around the body/cloth boundary. This is often caused by inaccuracies in the agnostic image, which may incorrectly leak artifacts from the original garment. In our human evaluation, 10/17 videos that were failed had agnostic errors. Lastly, improbable details may be hallucinated in unseen garment regions, because the input image only shows one view of the garment. Future work might consider multi-garment conditioning and individual person customization for improved garment and person fidelity. Other errors include minor flickering for fine-grained patterns.
+          </p>
+        </div>
+      </div>
+    </section>
+
+
+    <section id="limitations">
+    <div class="content" style="background-color: rgb(255, 255, 255); color:rgb(0, 0, 0);">
+      <div class="header_dark_gray" style="background-color: rgb(230, 230, 230); color:rgb(0, 0, 0);">
+        <h1>Bibtex</h1>
+      </div>
+    </div>
+      <div class="limitations" style="background-color: rgb(255, 255, 255); color:rgb(0, 0, 0)">
+        <div class="inside">
+          <p class="text" style="padding: 16px; background-color: rgb(250, 250, 250);">
+          @InProceedings{Karras_FashionVDM_2024,<br>
+            &nbsp;&nbsp;author={Karras, Johanna and Li, Yingwei and Liu, Nan and Zhu, Luyang and Yoo, Innfarn and Lugmayr, Andreas and Lee, Chris and Kemelmacher-Shlizerman, Ira},<br>
+            &nbsp;&nbsp;title={Fashion-VDM: Video Diffusion Model for Virtual Try-On},<br>
+            &nbsp;&nbsp;booktitle = {Proceedings of ACM SIGGRAPH Asia 2024},<br>
+            &nbsp;&nbsp;month = {December},<br>
+            &nbsp;&nbsp;year={2024},<br>
+          }
+        </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="bibTex_thanks">
+      <div class="content" style="background-color: rgb(230, 230, 230); color:rgb(0, 0, 0); margin-top: 25px;">
+        <div style="max-width:1000px; margin-left:auto; margin-right:auto">
+            <!---<h1 style="padding-top:min(5%, 20px);">Acknowledgements</h1>-->
+            <div class="header_dark_gray" style="background-color: rgb(230, 230, 230); color:rgb(0, 0, 0);">
+                <h1>Acknowledgements</h1>
+            </div>
+            <p class="smaller" style="text-align: justify; max-width: 1000px;">
+              This work was done when all authors were at Google.
+              We would like to thank Chunhui Gu, Alan Yang, Varsha Ramakrishnan, Tyler Zhu, Srivatsan Varadharajan, Yasamin Jafarian and Ricardo Martin-Brualla for their insightful discussions.
+              We are grateful for the kind support of the whole Google ARML Commerce organization. We especially thank Hayes Helsper for his expertise in figure design.
+            </p>
+        </div>
+        </div>
+    </section>
+
+    <script src="./static/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
